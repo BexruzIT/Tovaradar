@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="7VQZjJtJmlRhAKvqFVSBSzZh8FVPJlGFKG7Hgugg">
+        <title>Document</title>
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://www.tovaradar.ru/scss/style.css">
+
+        <link rel="stylesheet" href="https://www.tovaradar.ru/scss/style1.css">
+        <link rel="stylesheet" href="https://www.tovaradar.ru/scss/responsive.css">
+
+        <link rel="stylesheet" href="https://www.tovaradar.ru/scss/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://www.tovaradar.ru/scss/owl.theme.default.min.css">
+        <!-- <script type="module" src="http://127.0.0.1:5173/@vite/client"></script><script type="module" src="http://127.0.0.1:5173/resources/js/app.js"></script> -->
+        <script src="https://www.tovaradar.ru/js/jquery.min.js"></script>
+        <!-- <script src="https://www.tovaradar.ru/js/OwlCarousel/docs/assets/vendors/jquery.min.js"></script> -->
+        <script src="https://www.tovaradar.ru/js/owl.carousel.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" /> -->
+        <!-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" /> -->
+        <!-- <script src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+          integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+
+        
+    </head>
+    <body class="font-sans antialiased">
+        
+
+
+        <template x-for="data in datas" :key="data.id">
+            <li class="px-3 py-1" >
+                 <button  class="w-full text-left flex items-center " @click=show2(data.id,data.title)>
+                    <div class="w-full">
+                        <a href="/categories" :class="{'site-color' : isSelected === data.id}" class="pr-1 max-w-fit hover-green	text-sm hover:underline  flex-1" x-text="data.title"></a>
+                    </div>
+                    <img :class="`img${data.id}`" class="img" src="https://www.tovaradar.ru/img/arrow-right.png" alt="">
+                </button>
+            </li>
+        </template>
+   </ul>
+   <ul  x-data="{isSelected1: '', childs: [
+         { id: 1, title: 'Мобильные телефоны и аксессуары',cat_id:1},
+         { id: 2, title: 'Компьютеры и комплектующие',cat_id:1},
+         { id: 3, title: 'Телевизоры и аксессуары',cat_id:1},
+         { id: 4, title: 'Ноутбуки и аксессуары',cat_id:1},
+         { id: 5, title: 'Игровые приставки',cat_id:1},
+         { id: 6, title: 'Наушники и аксессуары',cat_id:1},
+         { id: 7, title: 'Портативная акустика',cat_id:1},
+         { id: 8, title: 'Видеоигры',cat_id:1},
+         { id: 9, title: 'Умные часы и браслеты',cat_id:1},
+         { id: 10, title: 'Аудио и видео',cat_id:1},
+         { id: 11, title: 'Офисная техника',cat_id:1},
+         { id: 12, title: 'Планшеты и аксессуары',cat_id:1},
+         { id: 13, title: 'Портативная электроника и гаджеты',cat_id:1},
+         { id: 14, title: 'Сетевое оборудование',cat_id:1},
+         { id: 15, title: 'Фото- и видеокамеры',cat_id:1},
+         { id: 16, title: 'Электронные книги и аксессуары',cat_id:1},
+       ]}"  class="second  absolute  origin-top ul-1  z-50 white-bg  sm:top-52  lg:top-44  w-28 left-2 cat-block">
+       <li  class="px-3 py-1  font-semibold selected_sec"></li>
+       <template x-for="child in childs" :key="child.id">
+           <li  class="px-3 py-1 li1" :class="`cat_id${child.cat_id}`"  >
+               <button  class="w-full text-left flex items-center show3"  @click=show3(child.id,child.title)>
+                   <div class="w-full">
+                       <a href="/categories" :class="{'site-color' : isSelected1 === child.id}"  class="pr-1 max-w-fit	text-sm hover-green hover:underline flex-1 text-gray" x-text="child.title"></a>
+                   </div>
+                   <img :class="`img${child.id}`" class="img" src="https://www.tovaradar.ru/img/arrow-right.png" alt="">
+               </button>
+
+           </li>
+       </template>
+   </ul>
+   <ul x-data="{isSelected2: '', childs2: [
+         { id: 1, title: 'Смартфоны',cat_id:1},
+         { id: 2, title: 'Аксессуары для телефонов',cat_id:1},
+         { id: 3, title: 'Мобильные телефоны',cat_id:1},
+         { id: 4, title: 'Запчасти для смартфонов',cat_id:1},
+         { id: 5, title: 'Сим-карты',cat_id:1},
+         { id: 6, title: 'Кнопочные телефоны',cat_id:1},
+       ]}"  class="third  absolute  origin-top ul-1  z-50 white-bg  sm:top-52  lg:top-44  w-28 left-8 cat-block">
+       <li  class="px-3 py-1  font-semibold selected_third"></li>
+       <template x-for="child2 in childs2" >
+           <li class="px-3 py-1 li2"  :class="`cat_id${child2.cat_id}`">
+               <button  class="w-full text-left show4 flex items-center outline-none focus:outline-none" @click=show4(child2.id,child2.title)>
+                   <div class="w-full">
+                       <a href="/categories" :class="{'site-color' : isSelected2 === child2.id}"  class="pr-1 flex-1 max-w-fit text-sm hover-green	 hover:underline " x-text="child2.title"></a>
+                   </div>
+                   <img :class="`img${child2.id}`" class="img" src="https://www.tovaradar.ru/img/arrow-right.png" alt="">
+               </button>
+               <ul x-data="{ childs3: [
+                     { id: 1, title: 'Смартфоны Android',cat_id:1},
+                     { id: 2, title: 'Смартфоны Apple',cat_id:1},
+                     { id: 3, title: 'Смартфоны Xiaomi',cat_id:1},
+                     { id: 4, title: 'Смартфоны Samsung Galaxy',cat_id:1},
+                   ]}" class="fourth   absolute  origin-top ul-1  z-50 white-bg  sm:top-52  lg:top-44  w-28  cat-block">
+                   <li  class="px-3 py-1  font-semibold selected_fourth" ></li>
+                   <template x-for="child3 in childs3" :key="child3.id">
+
+                       <li class="px-3 py-1 li3" :class="`cat_id${child3.cat_id}`">
+                           <button  class="w-full text-left show4 flex items-center outline-none focus:outline-none" >
+                               <div class="w-full">
+                                   <a href="/categories" :class="{'site-color' : isSelected2 === child3.id}"  class="pr-1 flex-1 max-w-fit text-sm hover-green	 hover:underline " x-text="child3.title"></a>
+                               </div>
+                               <img  src="https://www.tovaradar.ru/img/arrow-right.png" alt="">
+                           </button>
+                       </li>
+                   </template>
+               </ul>
+           </li>
+       </template>
+   </ul>
+</div>
+
+
+            <!-- Page Heading -->
+            
+            <!-- Page Content -->
+  
+
+
+ 
+                <div x-data="{ orders: [
+                        { id: 1, shop: 'Магазин'},
+                        { id: 2, shop: 'Магазин 1'},
+                    ]}">
+                    <template x-for="order in orders" :key="order.id">
+                        <div class="h-max border rounded-lg p-3 mb-10 ">
+                            <div class="flex flex-wrap items-baseline p-3">
+                                <span  class="font-bold text-2xl">Заказ №  </span><span  class="font-bold text-2xl" x-text="order.id"></span>
+                                <span  class="font-bold text-md ml-2 site-color" x-text="order.shop"></span>
+                            </div>
+                            <div  x-data="{ products: [
+                                    { id: 1, src: 'Product Photo.png', instock:'true', title: 'Смартфон Xiaomi Mi 10T Pro 8GB/256GB (бирюзовый)',code:'67998909',order_id:1,count:1,price:'3000 ₽'},
+                                    { id: 2, src: 'd7639c0de4ce09ba29c0e151fcc64d3b.png', instock:'false', title: 'Умная лампа светодиодная Xiaomi Mi LED Smart Bulb Warm White XMBGDP01YLK',code:'67998909',order_id:1,count:1,price:'3000 ₽'},
+                                    { id: 3, src: 'Product Photo.png', instock:'true', title: 'Смартфон Xiaomi Mi 10T Pro8GB/256GB (бирюзовый)',code:'67998909',order_id:2,count:1,price:'3000 ₽'},
+                                    { id: 4, src: 'd7639c0de4ce09ba29c0e151fcc64d3b.png', instock:'true', title: 'Умная лампа светодиодная Xiaomi Mi LED Smart Bulb Warm White XMBGDP01YLK',code:'67998909',order_id:2,count:1,price:'3000 ₽'},
+                                    { id: 5, src: 'd7639c0de4ce09ba29c0e151fcc64d3b.png', instock:'true', title: 'Умная лампа светодиодная Xiaomi Mi LED Smart Bulb Warm White XMBGDP01YLK',code:'67998909',order_id:2,count:1,price:'3000 ₽'},
+
+                                ]}">
+                                <template x-for="product in products" :key="product.id">
+                                    <template x-if="product.order_id==order.id" class="h-max border rounded-lg p-3 mb-10 ">
+                                        <div>
+                                            <div  class="grid grid-1 grid-cols-6  sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-6 gap-6 mb-10 items-center" >
+                                                <img class="w-24 m-auto" x-bind:src="`https://www.tovaradar.ru/img/subcategories/${product.src}`" alt="">
+                                                <div class="title-pr flex flex-col col-span-2">
+                                                    <template x-if="product.instock=='true'">
+                                                        <span x-text="product.title"></span>
+                                                    </template>
+                                                    <template x-if="product.instock=='false'">
+                                                        <span class="text-gray-400" x-text="product.title"></span>
+                                                    </template>
+                                                    <p class="font-bold text-gray-300">код товара:<span class="ml-1" x-text="product.code"></span></p>
+                                                </div>
+                                                <div class="custom-number-input h-10 w-24">
+                                                    <div  x-data="counter()" class="flex mt-1">
+                                                        <button x-on:click="decrement()"  :class="{ 'border-red-500 text-red-500':product.instock=='false' }"  class="text-gray-600 sm:text-lg text-xl border px-2 rounded cursor-pointer">
+                                                            <span class="m-auto font-thin">−</span>
+                                                        </button>
+                                                        <span x-text="count"  :class="{ 'text-red-500':product.instock=='false' }"  class="m-auto"></span>
+                                                        <button  x-on:click="increment()" :class="{ 'border-red-500 text-red-500':product.instock=='false' }" class="text-gray-600 sm:text-lg  text-xl border px-2 rounded cursor-pointer">
+                                                            <span class="m-auto font-thin">+</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <span class="font-bold text-xl" :class="{ 'text-gray-400':product.instock=='false' }" x-text="product.price"></span>
+                                                <button type="button" name="button"><img class="w-6 m-auto ml-3" src="https://www.tovaradar.ru/img/g2234.png" alt=""></button>
+                                            </div>
+                                            <template x-if="product.instock=='false'">
+                                                <div class="lg:ml-36 bg-red-50 p-2 rounded-2xl w-max pr-txt">
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </template>
+                               </template>
+                            </div>
+                        </div>
+                   </template>
+                </div>
+
+                <form class="" action="index.html" method="post">
+                    <div class="h-max  form-cart border rounded-lg p-3 mb-10 ">
+                        <p class="font-bold text-2xl">Адрес доставки</p>
+
+                        <div class="my-5">
+                            <div>
+                                <input placeholder="Город, улица, номер дома" class="appearance-none focus:ring-0  block w-full bg-grey-lighter  text-gray-600 placeholder-gray-400 border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl py-2 px-4" type="text">
+                            </div>
+
+                            <div class="mt-4 grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                <label class="block tracking-wide text-gray-400">
+                                  Кв./офис
+                                  <input  class="appearance-none focus:ring-0  block w-full bg-grey-lighter border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                                </label>
+                                <label class="block tracking-wide text-gray-400">
+                                  Этаж
+                                  <input  class="appearance-none focus:ring-0  block w-full bg-grey-lighter  border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                                </label>
+                                <label class="block tracking-wide text-gray-400">
+                                  Подъезд
+                                  <input  class="appearance-none focus:ring-0  block w-full bg-grey-lighter  border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                                </label>
+                                <label class="block tracking-wide text-gray-400">
+                                  Домофон
+                                  <input  class="appearance-none focus:ring-0  block w-full bg-grey-lighter  border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                                </label>
+                            </div>
+                           <textarea rows="5" placeholder="Комментарий к заказу" class="mt-3 px-4 w-full placeholder-gray-400  border border-gray-200 rounded-md focus:border-blue-400  focus:border-green-500 hover:border-green-500" x-text="input"></textarea>
+                        </div>
+                        <p class="font-bold text-2xl mb-3">Получатель</p>
+                        <div class="">
+                            <input placeholder="Имя" class="min-inp appearance-none focus:ring-0  mb-2 block w-1/2 bg-grey-lighter  text-gray-600 placeholder-gray-400 border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                            <input placeholder="Фамилия" class="min-inp appearance-none focus:ring-0  mb-2 block w-1/2 bg-grey-lighter  text-gray-600 placeholder-gray-400 border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                            <input placeholder="E-mail" class="min-inp appearance-none focus:ring-0  mb-2 block w-1/2 bg-grey-lighter  text-gray-600 placeholder-gray-400 border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                            <input placeholder="Телефон" class="min-inp appearance-none focus:ring-0  mb-2 block w-1/2 bg-grey-lighter  text-gray-600 placeholder-gray-400 border border-gray-200 focus:border-green-500 hover:border-green-500  rounded-xl pb-3 px-4" type="text">
+                        </div>
+                        <p class="font-bold text-2xl my-5">Способ оплаты</p>
+                        <div class="flex flex-col mr-4">
+                            <div>
+                                <input id="green-radio" type="radio" value="" name="colored-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-400 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="green-radio" class="ml-2 dark:text-gray-300">Наличными при полученнии</label>
+                            </div>
+                            <div>
+                                <input id="green-radio1" type="radio" value="" name="colored-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-400 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="green-radio1" class="ml-2 dark:text-gray-300">Онлайн банковской картой</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="p-4 my-5 w-full bg-gray-200 text-center rounded-lg">Оформить заказ</button>
+
+                </form>
+
+            </div>
+
+            
+            </main>
+            
+        </div>
+        <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+        <!-- <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script> -->
+        <script src="https://www.tovaradar.ru/js/script.js"></script>
+        <!-- <script src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script> -->
+        
+    </body>
+</html>
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</html>
